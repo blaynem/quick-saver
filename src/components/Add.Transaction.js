@@ -40,11 +40,11 @@ class AddTransaction extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    height: 200,
+    height: 180,
     backgroundColor: "#212121",
     margin: 10,
     padding: 15,
-    elevation: 3
+    elevation: 3,
   },
   text: {
     color: "white"
