@@ -1,26 +1,17 @@
 import React, { Component } from 'react'
-import { Button, Text, View } from 'react-native';
+import { View } from 'react-native';
 
-import { connect } from 'react-redux';
-
-import { testAction } from './actions';
+import Landing from './screens/Landing';
 
 class MainApp extends Component {
   render() {
     return (
-      <View>
-        <Text>Testing the thing here</Text>
-        <Button title="Press Me!" onPress={() => this.props.testAction()}/>
-        <Text>{JSON.stringify(this.props)}</Text>
+      <View style={{flex: 1}}>
+        <Landing />
       </View>
     )
   }
 }
 
-const mapStateToProps = (state) => {
-  return ({
-    allState: state
-  })
-}
 
-export default connect(mapStateToProps, { testAction })(MainApp);
+export default MainApp;

@@ -1,9 +1,14 @@
-export function testAction() {
+import { ADDTRANSACTION } from '../constants';
+
+export function addTransaction(payload) {
   return(dispatch) => {
-    console.log("Testing")
+    const timeStamp = Date.now();
     dispatch({
-      type: "TESTACTION",
-      payload: "Test Data Sent!"
+      type: ADDTRANSACTION,
+      payload: {
+        ...payload,
+        timeStamp
+      }
     })
   }
 }
