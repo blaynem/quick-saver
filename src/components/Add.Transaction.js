@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-import { Button, StyleSheet, Text, TextInput, View } from 'react-native';
+import { TouchableOpacity, StyleSheet, Text, TextInput, View } from 'react-native';
 import { connect } from 'react-redux';
 
 import { addTransaction } from '../actions';
 
 class AddTransaction extends Component {
   state = {
-    price: "",
-    description: ""
+    price: null,
+    description: null
   }
   handleTextChange = (name, val) => {
     this.setState({ [name]: val })
@@ -15,9 +15,14 @@ class AddTransaction extends Component {
   handleButtonPress = () => {
     this.props.addTransaction(this.state)
     this.setState({
-      price: "",
-      description: ""
+      price: null,
+      description: null
     })
+  }
+  renderMessage = () => {
+    const { error, message } = this.props;
+    if ( error ) return <Text style={[styles.buttonResponse, styles.negativeResponse]}>{error}</Text>
+    if ( message ) return <Text style={[styles.buttonResponse, styles.positiveResponse]}>{message}</Text>
   }
   render() {
     return (
@@ -32,15 +37,37 @@ class AddTransaction extends Component {
           onChangeText={(val) => this.handleTextChange("description", val)}
           value={this.state.description}
           style={styles.inputs} />
-        <Button onPress={this.handleButtonPress} title="Submit"/>
+        <TouchableOpacity style={styles.button} onPress={this.handleButtonPress}>
+          <Text style={styles.buttonText}>Uh Test</Text>
+        </TouchableOpacity>
+        {this.renderMessage()}
       </View>
     )
   }
 }
 
 const styles = StyleSheet.create({
+  button: {
+    alignItems: 'center',
+    borderWidth: 2,
+    borderColor: "gray",
+    padding: 10
+  },
+  buttonText: {
+    backgroundColor: "#212121",
+    color: "white"
+  },
+  buttonResponse: {
+    paddingTop: 10,
+    textAlign: "center"
+  },
+  negativeResponse: {
+    color: "red"
+  },
+  positiveResponse: {
+    color: "green"
+  },
   container: {
-    height: 180,
     backgroundColor: "#212121",
     margin: 10,
     padding: 15,
@@ -56,4 +83,11 @@ const styles = StyleSheet.create({
   }
 })
 
-export default connect(null, { addTransaction })(AddTransaction);
+const mapStateToProps = (state) => {
+  return {
+    error: state.transactions.error,
+    message: state.transactions.message,
+  }
+}
+
+export default connect(mapStateToProps, { addTransaction })(AddTransaction);

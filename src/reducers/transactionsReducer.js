@@ -1,13 +1,15 @@
-import { ADDTRANSACTION } from '../constants';
+import { ADDTRANSACTION, TRANSACTIONERROR, TRANSACTIONMESSAGE } from '../constants';
 
 const INITIAL_STATE = {
-  message: null,
+  data: [],
+  error: null,
   loading: false,
-  data: []
+  message: null
 }
 
 export default function transactionsReducer(state = INITIAL_STATE, action){
   switch(action.type){
+    // Adds a transaction
     case ADDTRANSACTION: 
       return {
         ...state,
@@ -16,6 +18,23 @@ export default function transactionsReducer(state = INITIAL_STATE, action){
           action.payload
         ]
       }
+
+    // Creates an error message
+    case TRANSACTIONERROR:
+      return {
+        ...state,
+        error: action.payload,
+        message: null
+      }
+    
+    // Creates a success message
+    case TRANSACTIONMESSAGE:
+      return {
+        ...state,
+        error: null,
+        message: action.payload
+      }
+    
     default:
       return state;
   }
