@@ -1,3 +1,5 @@
+import uuidv4 from 'uuid/v4'
+
 import { ADDTRANSACTION, TRANSACTIONERROR, TRANSACTIONMESSAGE } from '../constants';
 
 /**
@@ -16,6 +18,7 @@ export const addTransaction = (payload) => {
       type: ADDTRANSACTION,
       payload: {
         ...payload,
+        id: uuidv4(),
         timeStamp
       }
     })
