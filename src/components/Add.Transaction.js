@@ -38,7 +38,7 @@ class AddTransaction extends Component {
           value={this.state.description}
           style={styles.inputs} />
         <TouchableOpacity style={styles.button} onPress={this.handleButtonPress}>
-          <Text style={styles.buttonText}>Uh Test</Text>
+          <Text style={styles.buttonText}>Add Transaction</Text>
         </TouchableOpacity>
         {this.renderMessage()}
       </View>
