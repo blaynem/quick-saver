@@ -7,9 +7,8 @@ import PastTransactions from '../containers/Past.Transactions';
 class Landing extends Component {
   render() {
     return (
-      <View style={{flex: 1, paddingTop: 20, backgroundColor:"#333333"}}>
+      <View style={{flex: 1 }}>
         <AddTransaction />
-        <PastTransactions />
       </View>
     )
   }
