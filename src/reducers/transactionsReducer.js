@@ -6,7 +6,11 @@ const INITIAL_STATE = {
   loading: false,
   message: null,
   totals: {
-    allTransactions: 0
+    allTransactions: 0,
+    yearly: 0,
+    monthly: 0,
+    weekly: 0,
+    daily: 0
   }
 }
 
@@ -14,6 +18,20 @@ const calculateNewTotal = (transArr) => {
   return transArr.reduce( (acc, curr) => {
     return parseFloat(curr.price) + acc
   }, 0);
+}
+
+const calculateTotals = (allState) => {
+  /*
+    will returns a new totals object
+    ex object -
+    return {
+      allTransactions: 0,
+      yearly: 0,
+      monthly: 0,
+      weekly: 0,
+      daily: 0
+    }
+  */ 
 }
 
 export default transactionsReducer = (state = INITIAL_STATE, action) => {
