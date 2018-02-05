@@ -4,19 +4,33 @@ const INITIAL_STATE = {
   data: [],
   error: null,
   loading: false,
-  message: null
+  message: null,
+  totals: {
+    allTransactions: 0
+  }
+}
+
+const calculateNewTotal = (transArr) => {
+  return transArr.reduce( (acc, curr) => {
+    return parseFloat(curr.price) + acc
+  }, 0);
 }
 
 export default transactionsReducer = (state = INITIAL_STATE, action) => {
   switch(action.type){
     // Adds a transaction
-    case ADDTRANSACTION: 
+    case ADDTRANSACTION:
+      const newAddTransData = [
+        ...state.data,
+        action.payload
+      ]
       return {
         ...state,
-        data: [
-          ...state.data,
-          action.payload
-        ]
+        data: newAddTransData,
+        totals: {
+          ...state.totals,
+          allTransactions: calculateNewTotal(newAddTransData)
+        }
       }
 
     // Creates an error message
