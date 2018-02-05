@@ -12,7 +12,7 @@ class PastTransactions extends Component {
       return (
         <TransactionCard
           data={item}
-          key={item.timeStamp + item.price}/>
+          key={item.id}/>
       )
     })
   }

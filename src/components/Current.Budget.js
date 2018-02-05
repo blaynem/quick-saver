@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Text, View } from 'react-native';
 import { connect } from 'react-redux';
 
+import { parseUSD } from '../helper-functions/parseCurrency';
 import { currentBudgetStyles as styles } from './Styles.Components';
 
 class CurrentBudget extends Component {
@@ -9,9 +10,9 @@ class CurrentBudget extends Component {
     const { totals, monthlyBudget } = this.props
     return (
       <View style={styles.container}>
-        <Text style={styles.text}>Spent: {totals.allTransactions}</Text>
+        <Text style={styles.text}>Spent: {parseUSD(totals.allTransactions)}</Text>
         <Text style={styles.text}>Budget: {monthlyBudget}</Text>
-        <Text style={styles.text}>Left: {monthlyBudget - totals.allTransactions}</Text>
+        <Text style={styles.text}>Left: {parseUSD(monthlyBudget - totals.allTransactions)}</Text>
       </View>
     )
   }
