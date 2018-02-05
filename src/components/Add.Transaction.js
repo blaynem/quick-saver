@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { TouchableOpacity, StyleSheet, Text, TextInput, View } from 'react-native';
+import { Picker, TouchableOpacity, StyleSheet, Text, TextInput, View } from 'react-native';
 import { connect } from 'react-redux';
 
 import { addTransaction } from '../actions';
@@ -7,7 +7,8 @@ import { addTransaction } from '../actions';
 class AddTransaction extends Component {
   state = {
     price: null,
-    description: null
+    description: null,
+    category: null
   }
   handleTextChange = (name, val) => {
     this.setState({ [name]: val })
@@ -15,9 +16,14 @@ class AddTransaction extends Component {
   handleButtonPress = () => {
     this.props.addTransaction(this.state)
     this.setState({
-      price: null,
-      description: null
+      category: null,
+      description: null,
+      price: null
     })
+  }
+  handleCategorySelect = (value) => {
+    if ( value === null ) return;
+    this.setState({ category: value })
   }
   renderMessage = () => {
     const { error, message } = this.props;
@@ -32,6 +38,16 @@ class AddTransaction extends Component {
           onChangeText={(val) => this.handleTextChange("price", val)}
           value={this.state.price}
           style={styles.inputs} keyboardType={'numeric'}/>
+        <Text style={styles.text}>Categories</Text>
+        <Picker
+          style={styles.text}
+          mode="dropdown"
+          onValueChange={ (val) => this.handleCategorySelect(val) }
+          selectedValue={this.state.category}>
+          <Picker.Item label="Select a category" value={null} />
+          <Picker.Item label="Food" value="food"/>
+          <Picker.Item label="Fun" value="fun"/>
+        </Picker>
         <Text style={styles.text}>Description</Text>        
         <TextInput
           onChangeText={(val) => this.handleTextChange("description", val)}
@@ -45,6 +61,8 @@ class AddTransaction extends Component {
     )
   }
 }
+
+// categories
 
 const styles = StyleSheet.create({
   button: {

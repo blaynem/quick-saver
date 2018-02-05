@@ -4,15 +4,24 @@ import { StyleSheet, Text, View } from 'react-native';
 import convertDate from '../helper-functions/convertDate';
 
 class TransactionCard extends Component {
+  renderCategory = ()  => {
+    const { data } = this.props
+    if ( data.category ){
+      return <Text style={[styles.text, styles.category]}>{data.category.toUpperCase()}</Text>
+    }
+  }
   render() {
     const { data } = this.props
     return (
       <View style={styles.transactionCard}>
         <View style={styles.cardSideLeft}>
           <Text style={[styles.text, styles.paddingBottom]}>{convertDate(data.timeStamp)}</Text>
-          <Text style={styles.text}>Description: {data.description}</Text>
+          <Text style={[styles.text, styles.paddingBottom]}>
+            {data.description || "No Description"}
+          </Text>
         </View>
         <Text style={[styles.text, styles.cardSideRight]}>$ {data.price}</Text>
+        {this.renderCategory()}
       </View>
     )
   }
@@ -43,6 +52,19 @@ const styles = StyleSheet.create({
   },
   cardSideLeft: {
     flex: 2
+  },
+  category: {
+    backgroundColor: "gray",
+    maxWidth: 50,
+    textAlign: "center",
+    padding: 2,
+    paddingLeft: 5,
+    paddingRight: 5,
+    borderRadius: 5,
+    fontSize: 10,
+    position: "absolute",
+    top: 1,
+    right: 1
   }
 })
 
