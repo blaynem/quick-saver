@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Platform, StatusBar, View, Text } from 'react-native';
 import { NativeRouter, Route, Link } from 'react-router-native';
 
-import Landing from './screens/Landing';
+import Landing from './containers/Landing';
 import PastTransactions from './containers/Past.Transactions';
 import BottomBar from './components/Bottom.Bar';
 
