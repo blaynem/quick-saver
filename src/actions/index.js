@@ -10,8 +10,8 @@ import { ADDTRANSACTION, TRANSACTIONERROR, TRANSACTIONMESSAGE } from '../constan
  */
 export const addTransaction = (payload) => {
   return (dispatch) => {
-    if ( !payload.price && !payload.description ){
-      return dispatch(toastMessage(TRANSACTIONERROR, "Add more info"))
+    if ( !payload.price  ){
+      return dispatch(toastMessage(TRANSACTIONERROR, "Needs price"))
     }
     const timeStamp = Date.now();
     dispatch({
