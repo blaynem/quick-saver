@@ -7,7 +7,7 @@ const INITIAL_STATE = {
   message: null
 }
 
-export default function transactionsReducer(state = INITIAL_STATE, action){
+export default transactionsReducer = (state = INITIAL_STATE, action) => {
   switch(action.type){
     // Adds a transaction
     case ADDTRANSACTION: 

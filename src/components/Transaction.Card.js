@@ -42,7 +42,8 @@ const styles = StyleSheet.create({
     elevation: 2,
     flex: 1,
     flexDirection: "row",
-    justifyContent: "space-between"
+    justifyContent: "space-between",
+    borderRadius: 5
   },
   cardSideRight: {
     alignSelf: "center",
