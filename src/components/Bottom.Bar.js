@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { Text, View } from 'react-native';
 import { NativeRouter, Route, Link } from 'react-router-native';
+
+import { bottomBarStyles as styles } from './Styles.Components'
 
 class BottomBar extends Component {
   render() {
@@ -16,30 +18,5 @@ class BottomBar extends Component {
     )
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flexDirection: "row",
-    height: 40,
-    borderTopWidth: 2,
-    borderColor: "#1c1c1c"
-  },
-  linkStyle: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    flex: 1,
-  },
-  linkText: {
-    color: "white",
-  },
-  borderLeft: {
-    borderLeftWidth: 1,
-    borderColor: "#1c1c1c",
-  },
-  borderRight: {
-    borderRightWidth: 1,
-    borderColor: "#1c1c1c",
-  }
-})
 
 export default BottomBar;

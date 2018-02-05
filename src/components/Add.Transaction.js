@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { Picker, TouchableOpacity, StyleSheet, Text, TextInput, View } from 'react-native';
+import { Picker, TouchableOpacity, Text, TextInput, View } from 'react-native';
 import { connect } from 'react-redux';
 
 import { addTransaction } from '../actions';
+import { addTransactionStyles as styles } from './Styles.Components';
 
 class AddTransaction extends Component {
   state = {
@@ -61,45 +62,6 @@ class AddTransaction extends Component {
     )
   }
 }
-
-// categories
-
-const styles = StyleSheet.create({
-  button: {
-    alignItems: 'center',
-    borderWidth: 2,
-    borderColor: "gray",
-    padding: 10
-  },
-  buttonText: {
-    backgroundColor: "#212121",
-    color: "white"
-  },
-  buttonResponse: {
-    paddingTop: 10,
-    textAlign: "center"
-  },
-  negativeResponse: {
-    color: "red"
-  },
-  positiveResponse: {
-    color: "green"
-  },
-  container: {
-    backgroundColor: "#212121",
-    margin: 10,
-    padding: 15,
-    elevation: 3,
-  },
-  text: {
-    color: "white"
-  },
-  inputs: {
-    color: "white",
-    borderColor: "white",
-    marginBottom: 10
-  }
-})
 
 const mapStateToProps = (state) => {
   return {
