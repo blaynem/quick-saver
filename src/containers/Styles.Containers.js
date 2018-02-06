@@ -5,7 +5,6 @@ export const pastTransactionStyles = StyleSheet.create({
     backgroundColor: "#212121",
     margin: 10,
     padding: 10,
-    elevation: 1,
     flex: 2
   },
   text: {

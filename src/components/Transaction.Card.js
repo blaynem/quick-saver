@@ -21,7 +21,7 @@ class TransactionCard extends Component {
             {data.description || "No Description"}
           </Text>
         </View>
-        <Text style={[styles.text, styles.cardSideRight]}>$ {data.price}</Text>
+        <Text style={[styles.text, styles.cardSideRight]}>$ {parseFloat(data.price).toFixed(2)}</Text>
         {this.renderCategory()}
       </View>
     )

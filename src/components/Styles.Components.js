@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import { Platform, StatusBar, StyleSheet } from 'react-native';
 
 export const addTransactionStyles = StyleSheet.create({
   button: {
@@ -25,7 +25,6 @@ export const addTransactionStyles = StyleSheet.create({
     backgroundColor: "#212121",
     margin: 10,
     padding: 15,
-    elevation: 3,
   },
   text: {
     color: "white"
@@ -37,28 +36,33 @@ export const addTransactionStyles = StyleSheet.create({
   }
 })
 
-export const bottomBarStyles = StyleSheet.create({
+export const sideBarStyles = StyleSheet.create({
   container: {
-    flexDirection: "row",
-    height: 40,
-    borderTopWidth: 2,
-    borderColor: "#1c1c1c"
+    flex: 1,
+    position: "absolute",
+    top: Platform.OS === "ios" ? 0 : (StatusBar.currentHeight + 30),
+    bottom: 0,
+    left: 0,
+    backgroundColor: "red",
+    backgroundColor: "#333333",
+    zIndex: 1,
+    paddingLeft: 10
+  },
+  // hide completely offscreen
+  containerHidden: {
+    position: "absolute",
+    zIndex: -10,
+    left: -300,
+    top: Platform.OS === "ios" ? 0 : (StatusBar.currentHeight + 30),    
+    opacity: 0
   },
   linkStyle: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    flex: 1,
+    justifyContent: 'space-around',
+    height: 50,
+    width: 150,
   },
   linkText: {
     color: "white",
-  },
-  borderLeft: {
-    borderLeftWidth: 1,
-    borderColor: "#1c1c1c",
-  },
-  borderRight: {
-    borderRightWidth: 1,
-    borderColor: "#1c1c1c",
   }
 })
 
@@ -67,7 +71,6 @@ export const currentBudgetStyles = StyleSheet.create({
     backgroundColor: "#212121",
     margin: 10,
     padding: 15,
-    elevation: 3,
   },
   text: {
     color: "white"
@@ -86,7 +89,6 @@ export const transactionCardStyles = StyleSheet.create({
     padding: 10,
     marginTop: 5,
     marginBottom: 5,
-    elevation: 2,
     flex: 1,
     flexDirection: "row",
     justifyContent: "space-between",

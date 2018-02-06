@@ -1,6 +1,6 @@
 import uuidv4 from 'uuid/v4'
 
-import { ADDTRANSACTION, TRANSACTIONERROR, TRANSACTIONMESSAGE } from '../constants';
+import { ADDTRANSACTION, CHANGE_SETTINGS, TRANSACTIONERROR, TRANSACTIONMESSAGE } from '../constants';
 
 /**
  * Accepts an object of payload which includes a price and description.
@@ -53,5 +53,14 @@ export const toastMessage = (type, payload, timeout) => {
     setTimeout( () => {
       dispatch({ type, payload: null })
     }, timeout || 1500);
+  }
+}
+
+export const changeUserSettings = (payload) => {
+  return (dispatch) => {
+    dispatch({
+      type: CHANGE_SETTINGS,
+      payload
+    })
   }
 }
